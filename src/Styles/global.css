@@ -1,0 +1,49 @@
+.Foreground-Color {
+  color: #00ff08;
+}
+body {
+  background-color: #000000; /* Replace with your preferred color */
+  margin: 0;
+  padding: 0;
+}
+
+.Profession {
+  font-weight: 600;
+  color: white;
+  color: #00ff08;
+  font-size: 18pt;
+}
+
+.Profession-white {
+  font-weight: 600;
+  color: #666;
+
+  font-size: 18pt;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 15px;
+  font-size: 12pt;
+  /* background-color: rgba(0, 255, 0, 1); */
+  color: black;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: rgba(0, 255, 0, 1);
+  cursor: pointer;
+}
+
+/* Example of basic styling */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

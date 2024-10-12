@@ -1,0 +1,100 @@
+/* src/components/Navbar.css */
+
+nav {
+  background-color: #000000; /* Dark background color */
+  padding: 2rem; /* Padding around the navbar */
+}
+
+.navbar-container {
+  display: flex; /* Display items in a row */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+}
+
+.logo {
+  color: white;
+  font-size: 28pt;
+  margin-left: 75px;
+  font-weight: 600;
+}
+.Foreground-Color {
+  color: #4caf50;
+}
+
+nav ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Display list items in a row */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+nav ul li {
+  position: relative; /* Make the li position relative for pseudo-element positioning */
+  margin-right: 75px; /* Space between menu items */
+}
+
+nav ul li a {
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 16px; /* Font size for links */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover {
+  color: #4caf50; /* Change color on hover */
+}
+
+/* Styles for active link */
+nav ul li a.active {
+  color: #4caf50; /* Change to your desired active link color */
+  font-weight: bold; /* Optional: make active link bold */
+  transition: 0.3s;
+}
+nav ul li a.active::after {
+  content: ""; /* Add a pseudo-element */
+  display: block; /* Block display */
+  height: 3px; /* Height of the bottom bar */
+  background-color: #4caf50; /* Color of the bottom bar */
+  width: 100%; /* Full width */
+  position: absolute; /* Position it absolutely */
+  left: 0; /* Align to the left */
+  bottom: -5px; /* Position below the text */
+  transition: width 0.3s; /* Smooth transition */
+  border-radius: 50px;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none; /* Hide by default */
+  flex-direction: column; /* Align lines vertically */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.line {
+  height: 3px; /* Height of lines */
+  width: 25px; /* Width of lines */
+  background-color: white; /* Color of lines */
+  margin: 3px 0; /* Space between lines */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Hide the nav links by default */
+    flex-direction: column; /* Stack links vertically */
+    width: 100%; /* Full width */
+    position: absolute; /* Absolute positioning */
+    top: 60px; /* Position below the navbar */
+    left: 0; /* Align to the left */
+    background-color: #333; /* Background color for dropdown */
+  }
+
+  nav ul.open {
+    display: flex; /* Show links when open */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger menu */
+  }
+}

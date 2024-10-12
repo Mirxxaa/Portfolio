@@ -1,0 +1,96 @@
+/* src/pages/Aboutme.css */
+.about-container {
+  padding: 20px;
+  height: 100vh;
+  background-color: black; /* Light background for contrast */
+
+  margin: auto; /* Center the container */
+}
+.aboutme-wrapper {
+  width: 80vw;
+  margin: auto;
+}
+.aboutme-wrapper p {
+  text-align: justify;
+  width: 50%;
+  color: white;
+}
+.about-heading {
+  font-size: 2.5rem;
+  color: #333; /* Dark text color */
+  margin-bottom: 20px;
+}
+
+.about-heading:hover {
+  color: white;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  color: #555; /* Slightly lighter text color */
+  margin-bottom: 30px;
+}
+
+.about-subheading {
+  font-size: 1.8rem;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.experience-list,
+.education-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  color: #666; /* Gray text color for lists */
+}
+
+.experience-list li,
+.education-list li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+.Education-wrapper {
+  margin-top: 50px;
+}
+.Hover:hover {
+  color: white;
+}
+
+/* Add this to Aboutme.css */
+
+.Skills-wrapper {
+  width: 80vw;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.skills-scroll-container {
+  width: 100%; /* Set the container width */
+  overflow: hidden; /* Hide the overflow */
+  white-space: nowrap; /* Keep all children in a single line */
+  position: relative;
+}
+
+.skills-scroll {
+  display: inline-block; /* Required for the animation */
+  animation: scroll 15s linear infinite; /* Animation duration and type */
+}
+
+.skill-icon {
+  width: 60px; /* Set the width of the icons */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 150px; /* Space between icons */
+  margin-top: 50px;
+}
+
+/* Keyframes for the scrolling animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Start from right outside */
+  }
+
+  100% {
+    transform: translateX(-100%); /* Move to left outside */
+  }
+}

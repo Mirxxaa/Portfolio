@@ -1,0 +1,45 @@
+.skills-container {
+  background: radial-gradient(circle, #4c4c52 10%, transparent 11%);
+  background-size: 1em 1em;
+  background-color: black;
+  opacity: 1;
+  color: white;
+  height: 100vh;
+}
+
+.Skills-Wrapper {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.key-Skills,
+.Extra-Skills {
+  margin: 50px 0;
+}
+.key-Skills li {
+  font-size: 24pt;
+  margin: 25px 0;
+}
+.Skills-Wrapper .Skills-items ul {
+  list-style-type: none;
+  display: flex;
+  gap: 25px;
+  width: fit-content;
+}
+
+.Skills-items ul li {
+  padding: 15px;
+  width: fit-content;
+  color: gray;
+
+  font-weight: 600;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+}
+
+.Skills-items ul li:hover {
+  color: white;
+  transform: scale(1.2);
+}
