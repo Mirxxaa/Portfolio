@@ -18,7 +18,9 @@ const NavMenu = () => {
         <div className="flex justify-between items-center w-[80vw] m-auto">
           {/* Logo */}
           <div className="w-40 ">
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle Icon */}
