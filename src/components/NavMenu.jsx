@@ -33,9 +33,9 @@ const NavMenu = () => {
 
           {/* Navigation Links */}
           <ul
-            className={`text-lg md:flex md:items-center md:gap-10 gap-12 md:static absolute bg-gray-950 z-50 text-black md:bg-transparent top-0 left-0 w-full h-screen md:h-auto transition-all duration-500 ease-in-out ${
+            className={`text-lg md:flex md:items-center md:gap-10 gap-12 md:static absolute z-50 text-black md:bg-transparent top-0 left-0 w-full h-screen md:h-auto transition-all duration-500 ease-in-out ${
               isOpen ? "translate-x-0" : "-translate-x-full"
-            } md:translate-x-0 flex-col md:flex-row md:justify-end justify-center px-8 mt-4 text-xl absolute top-20 h-[200px]`}
+            } md:translate-x-0 flex-col md:flex-row md:justify-end justify-center px-8 mt-4 text-xl absolute top-20 h-[200px] bg-gray-950/50 backdrop-blur-sm`} // Add backdrop-blur and translucent background here
           >
             {/* Home Link */}
             <li
