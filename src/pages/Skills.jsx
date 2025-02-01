@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SpotlightCard from "@/components/SpotlightCard";
-import { db } from "@/firebase"; // Import Firebase Firestore instance
+import SpotlightCard from "../components/SpotlightCard";
+import { db } from "../firebase"; // Import Firebase Firestore instance
 import { collection, getDocs } from "firebase/firestore"; // Import Firestore functions
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]); // State to store fetched skills

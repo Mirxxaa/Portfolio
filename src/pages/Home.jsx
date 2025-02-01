@@ -1,13 +1,13 @@
 // src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
-import SplitText from "@/components/SplitText";
-import BlurText from "@/components/BlurText";
-import Hyperspeed from "@/components/Hyperspeed";
+import SplitText from "../components/SplitText";
+import BlurText from "../components/BlurText";
+import Hyperspeed from "../components/Hyperspeed";
 import Profilepic from "../assets/pngpic.png";
-import Logo from "@/components/Logo";
-import InfiniteScroll from "@/components/InfiniteScroll";
+import Logo from "../components/Logo";
+import InfiniteScroll from "../components/InfiniteScroll";
 import { Input } from "@heroui/input";
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 import "aos/dist/aos.css"; // Import AOS styles
 import AOS from "aos"; // Import AOS functionality
 
