@@ -4,12 +4,59 @@ import { db } from "../firebase"; // Firebase Firestore instance
 import { collection, getDocs } from "firebase/firestore"; // Firestore functions
 import Footer from "../components/Footer";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]); // State for skills
   const [tools, setTools] = useState([]); // State for tools
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error handling
+  const [isMobile, setIsMobile] = useState(false); // Track mobile view
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 1500, // time between slides in milliseconds
+    slidesToShow: 1, // Show one item per slide on mobile
+    slidesToScroll: 1, // Scroll one item per slide
+    responsive: [
+      {
+        breakpoint: 768, // for mobile view
+        settings: {
+          slidesToShow: 1, // Shows one item on small screens
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024, // for tablets, larger phones, etc.
+        settings: {
+          slidesToShow: 3, // Show 3 items per slide for medium screens
+          slidesToScroll: 3,
+        },
+      },
+    ],
+  };
+
+  // Handle window resize for mobile detection
+  const checkMobile = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    // Check if it's mobile or desktop on load
+    checkMobile();
+
+    // Event listener to check on window resize
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   // Fetch both tools and skills
   useEffect(() => {
@@ -107,13 +154,32 @@ const Skills = () => {
           <h1 className="text-2xl font-semibold mr-4">Tools</h1>
           <div className="flex-grow border-t-1 border-white"></div>
         </div>
-        <div className="overflow-hidden w-full">
-          <div className="flex flex-wrap animate-scroll gap-6 p-6">
+
+        {/* Conditional Rendering for Carousel on Mobile */}
+        {isMobile ? (
+          <div className="w-full ">
+            <Slider {...settings}>
+              {tools.map((tool, index) => (
+                <SpotlightCard
+                  key={index}
+                  className="flex flex-col mx-2 items-center"
+                >
+                  <img
+                    src={tool.toolImage}
+                    alt={tool.toolName}
+                    className="w-20 h-20 object-contain mb-4"
+                  />
+                  <p className="text-center text-white text-lg font-medium">
+                    {tool.toolName}
+                  </p>
+                </SpotlightCard>
+              ))}
+            </Slider>
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-6 p-6">
             {tools.map((tool, index) => (
-              <SpotlightCard
-                key={index}
-                className=" flex flex-col items-center"
-              >
+              <SpotlightCard key={index} className="flex flex-col items-center">
                 <img
                   src={tool.toolImage}
                   alt={tool.toolName}
@@ -125,7 +191,7 @@ const Skills = () => {
               </SpotlightCard>
             ))}
           </div>
-        </div>
+        )}
       </div>
 
       <Footer />
