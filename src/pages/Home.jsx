@@ -129,7 +129,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       <div>
-        {/* <Hyperspeed
+        <Hyperspeed
           effectOptions={{
             onSpeedUp: () => {},
             onSlowDown: () => {},
@@ -167,7 +167,7 @@ const Home = () => {
               sticks: 0x03b3c3,
             },
           }}
-        /> */}
+        />
       </div>
       <div className="min-h-screen bg-black flex flex-col justify-center text-white ">
         {/* Hello Section */}
