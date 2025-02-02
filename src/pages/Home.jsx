@@ -97,8 +97,8 @@ const Home = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the default form submission and page refresh
 
     // Prepare the form data to be sent to Google Sheets via Google Apps Script
     const url =
@@ -129,7 +129,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       <div>
-        <Hyperspeed
+        {/* <Hyperspeed
           effectOptions={{
             onSpeedUp: () => {},
             onSlowDown: () => {},
@@ -167,7 +167,7 @@ const Home = () => {
               sticks: 0x03b3c3,
             },
           }}
-        />
+        /> */}
       </div>
       <div className="min-h-screen bg-black flex flex-col justify-center text-white ">
         {/* Hello Section */}
@@ -287,72 +287,75 @@ const Home = () => {
         </div>
       </div>
 
-      <div data-aos="fade-up" className="min-h-[300px] mt-4 p-8">
-        <div className="bg-black w-full h-full rounded-3xl md:py-12 py-8 flex items-center justify-center">
+      <div
+        data-aos="fade-up"
+        className="h-screen flex items-center justify-center p-6"
+      >
+        <div
+          className="bg-black w-full justify-center
+         p-8 rounded-2xl flex flex-col"
+        >
+          <div>
+            <h3 className="text-white text-2xl my-6">Contact Me</h3>
+          </div>
           <form
-            action="submit"
-            className="flex justify-center items-center flex-1 h-full"
+            onSubmit={handleSubmit}
+            className=" w-full flex items-center justify-center flex-col"
           >
-            <div className="flex flex-col  flex-1 gap-4 items-center justify-center">
-              <h2 className="text-white text-2xl font-semibold py-4">
-                CONTACT ME
-              </h2>
-              <div className="md:w-full px-4 md:p-0 flex  justify-center items-center w-full">
-                <div className="flex flex-col gap-6 w-full justify-center items-center">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="flex w-full items-center flex-col justify-center
-                     md:flex-row flex-wrap gap-4 px-8"
-                  >
-                    <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
-                      <Input
-                        label="Name"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        type="text"
-                        isRequired
-                        className="w-full md:w-[220px]"
-                      />
-                      <Input
-                        label="Email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        type="email"
-                        id="email"
-                        name="email"
-                        isRequired
-                        className="w-full md:w-[220px]"
-                      />
-                      <Input
-                        label="Country"
-                        value={formData.country}
-                        onChange={handleInputChange}
-                        type="text"
-                        id="country"
-                        name="country"
-                        isRequired
-                        className="w-full md:w-[220px]"
-                      />
-                      <Input
-                        label="Phone With Country Code"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        type="number"
-                        id="phone"
-                        name="phone"
-                        isRequired
-                        className="w-full md:w-[220px]"
-                      />
-                    </div>
-
-                    <button className="text-white font-semibold bg-gray-600 hover:bg-white hover:text-black transition-all duration-300 flex justify-center items-center px-4 py-2 rounded-xl mt-4 md:mt-0">
-                      Submit
-                    </button>
-                  </form>
-                </div>
+            <div className="flex flex-col gap-4 w-full">
+              <div className="mb-4 ">
+                <Input
+                  label="Name"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  type="text"
+                  isRequired
+                />
               </div>
+
+              <div className="mb-4 w-full ">
+                <Input
+                  label="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  type="email"
+                  id="email"
+                  name="email"
+                  isRequired
+                />
+              </div>
+
+              <div className="mb-4 w-full ">
+                <Input
+                  label="Country"
+                  value={formData.country}
+                  onChange={handleInputChange}
+                  type="text"
+                  id="country"
+                  name="country"
+                  isRequired
+                />
+              </div>
+
+              <div className="mb-4 w-full ">
+                <Input
+                  label="Phone With Country Code"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  isRequired
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-center md:justify-start mt-4 md:mt-0 w-full">
+              <button className="text-white font-semibold w-fit bg-gray-600 hover:bg-white hover:text-black transition-all duration-300 flex justify-center items-center px-6 py-3 rounded-xl">
+                Submit
+              </button>
             </div>
           </form>
         </div>
