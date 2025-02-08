@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { firestore } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Projects = () => {
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Fetch categories and projects from Firebase
   useEffect(() => {
@@ -86,38 +88,74 @@ const Projects = () => {
         </div>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          {projects
-            .filter(
-              (project) =>
-                selectedCategory === null ||
-                project.categoryId === selectedCategory
-            )
-            .map((project) => (
-              <div
-                key={project.id}
-                className="bg-gray-900 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform"
-              >
-                {/* Image */}
-                <div className="w-full h-64 overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+        <div>
+          {/* Project Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            {projects
+              .filter(
+                (project) =>
+                  selectedCategory === null ||
+                  project.categoryId === selectedCategory
+              )
+              .map((project) => (
+                <div
+                  key={project.id}
+                  className="bg-gray-900 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                  onClick={() => setSelectedImage(project.imageUrl)}
+                >
+                  {/* Image */}
+                  <div className="w-full h-64 overflow-hidden">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                {/* Project Information */}
-                <div className="p-4">
-                  <h4 className="text-lg font-semibold text-white mb-2">
-                    {project.name}
-                  </h4>
-                  <p className="text-gray-400 text-sm line-clamp-2">
-                    {project.description}
-                  </p>
+                  {/* Project Information */}
+                  <div className="p-4">
+                    <h4 className="text-lg font-semibold text-white mb-2">
+                      {project.name}
+                    </h4>
+                    <p className="text-gray-400 text-sm line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
+
+          {/* Image Preview Modal with Animation */}
+          <AnimatePresence>
+            {selectedImage && (
+              <motion.div
+                className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <motion.div
+                  className="relative"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                >
+                  <img
+                    src={selectedImage}
+                    alt="Preview"
+                    className="max-w-full max-h-[90vh] rounded-lg shadow-lg"
+                  />
+                  <button
+                    className="absolute top-2 right-2 bg-black    w-8 h-8 hover:rotate-180 duration-300 ease-in-out text-white rounded-full "
+                    onClick={() => setSelectedImage(null)}
+                  >
+                    ✕
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
